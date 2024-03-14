@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form" action="/membros" method="POST" enctype="multipart/form-data">
+    
+    <h1>Novo Membro</h1>
+
+    <label for="name">Nome:</label>
+    <input name="name" id="name" placeholder="Nome" type="text" required autofocus>
+
+    <label for="surname">Sobrenome:</label>
+    <input name="surname" id="surname" placeholder="Sobrenome" type="text" required>
+
+    <label for="birth_day">Data de nascimento:</label>
+    <input id="birth_day" name="birth_day" placeholder="Data de nascimento" type="date" required>
+
+    <label for="email">E-mail:</label>
+    <input type="text" name="email" id="email" placeholder="E-mail" required>
+
+    <label for="phone">Telefone:</label>
+    <input type="text" name="phone" id="phone" placeholder="Telefone" required>
+
+    <label for="address">Endereço:</label>
+    <input type="textarea" name="address" id="address" placeholder="Endereço" required>
+
+    <label for="plan_type">Tipo do plano</label>
+    <select id="plan_type" name="plan_type">
+        {% for tipo_plano in tipos_planos %}
+        <option value="{{tipo_plano.ident}}">{{tipo_plano.plan}}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="start_date">Data de início:</label>
+    <input id="start_date" name="start_date" placeholder="Data de início" type="date" required>
+
+    <label for="enabled">Ativo:</label>
+    <select name="enabled" id="enabled">
+        <option value="True">Sim</option>
+        <option value="False">Não</option>
+    </select>
+
+    <label for="img">Imagem</label>
+    <input id="img" name="img" type="file">
+    
+    <button type="submit">Adicionar Membro</button>
+
+</form>
+{% endblock content %}

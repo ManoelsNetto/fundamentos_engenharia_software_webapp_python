@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="show-details">
+    <section class="details-header">
+        <h3>Nome: {{membro.name}} {{membro.surname}}</h3>
+        <h3>ID do membro: {{membro.ident}}</h3>
+    </section>
+    <section class="details-body">
+        <div>
+            <h4>Endereço: {{membro.address}}</h4>
+            <h4>Telefone: {{membro.phone}}</h4>
+            <h4>E-mail: {{membro.email}}</h4>
+            <h4>Data Nascimento: {{membro.birth_day.strftime('%d/%m/%Y')}}</h4>
+        </div>
+        <hr>
+        <div>
+            <h4>Tipo de plano: {{plan_type.plan}}</h4>
+            <h4>Data de início: {{membro.start_date.strftime('%d/%m/%Y')}}</h4>
+            <h4>Status: {% if membro.enabled == True %} Ativo {% else %} Inativo {% endif %}</h4>
+        </div>
+        <hr>
+        <h4>Atividades Agendadas:</h4>
+        <ul>
+            {% for atividade in atividades_agendadas %}
+            <li>
+                <a href="/membros/{{membro.ident}}">{{atividade.name}} - {{atividade.date.strftime('%d/%m/%Y')}} - {{atividade.date.strftime('%I:%M %p')}}</a>
+                <a class="del-btn" href="/agendamentos/delete/membro/{{membro.ident}}/{{atividade.ident}}">Remover Agendamento</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <p>
+            <a class="card-btn" href="/membros/{{membro.ident}}/edit">Editar Membro</a>            
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/agendamentos/novo/membro/{{membro.ident}}">Fazer Agendamento</a>
+        </p>
+    </section>
+</section>
+{% endblock content %}

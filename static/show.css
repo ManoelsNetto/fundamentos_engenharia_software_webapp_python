@@ -1,0 +1,31 @@
+.show-details {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: 15px auto;
+  width: 60%;
+  height: auto;
+  padding: 16px;
+  color: #0F3D3E;
+  font-family: "Roboto", sans-serif;
+}
+
+.details-header {
+  background-color: #0F3D3E;
+  border-radius: 5px;
+  color: #f1f1f1;
+  padding: 10px;
+}
+
+.details-body {
+  color: #0F3D3E;
+  padding: 10px;
+}
+
+.details-body > ul > li > a {
+  color: #0F3D3E;
+}
+
+.details-body > ul > li {
+  padding: 10px;
+}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form" action="/agendamentos/membro" method="POST">
+    
+    <h1>Novo Agendamento</h1>
+
+    <span class="error">{{error}}</span>
+
+    <label for="member">Membro:</label>
+    <input name="member" id="member" type="hidden" value="{{membro.ident}}">
+
+    <h4>{{membro.name}} {{membro.surname}}</h4>
+    
+    <label for="activity">Atividade:</label>
+    <select name="activity" id="activity">
+        {% for atividade in atividades %}
+        <option value="{{atividade.ident}}">{{atividade.name}} - {{atividade.plan_type.plan}} - {{atividade.date.strftime('%d/%m/%Y')}} - {{atividade.date.strftime('%X')}}</option>
+        {% endfor %}
+    </select>
+    
+    <button type="submit">Agendar Atividade</button>
+
+</form>
+{% endblock content %}

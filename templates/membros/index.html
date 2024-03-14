@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flexcards">
+    {% for membro in membros %}
+    <div class="card">
+        {% if membro.img %}
+        <img id="logo" src="{{url_for('static', filename='uploads/' + membro.img.__str__())}}">
+        {% else %}
+        <img id="logo" src="{{url_for('static', filename='user_account_profile.png')}}">
+        {% endif %}
+        <h4 id="name"><strong>{{membro.name}} {{membro.surname}}</strong></h4>
+        <h5>Telefone: {{membro.phone}}</h5>
+        <h5>Plano: {{membro.plan_type.plan}}</h5>
+        <h5>Data de início: {{membro.start_date.strftime('%d/%m/%Y')}}</h5>
+        <hr>
+        <p>
+            <a class="card-btn" href="/membros/{{membro.ident}}">Detalhes</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/agendamentos/novo/membro/{{membro.ident}}">Fazer Agendamentos</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/membros/{{membro.ident}}/edit">Editar</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/membros/{{membro.ident}}/delete">Remover</a>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

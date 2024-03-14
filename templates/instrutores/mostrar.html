@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="show-details">
+    <section class="details-header">
+        <h3>Nome: {{instrutor.name}} {{instrutor.surname}}</h3>
+    </section>
+    <section class="details-body">
+        <div>
+            <h4>Endereço: {{instrutor.address}}</h4>
+            <h4>Telefone: {{instrutor.phone}}</h4>
+            <h4>Data Nascimento: {{instrutor.birth_day.strftime('%d/%m/%Y')}}</h4>
+        </div>
+        <hr>
+        <h4>Atividades:</h4>
+        <ul>
+            {% for atividade in instrutor_atividades %}
+            <li>
+                <a href="/atividades/{{atividade.ident}}">{{atividade.name}} - {{atividade.date.strftime('%d/%m/%Y')}} - {{atividade.date.strftime('%I:%M %p')}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <p>
+            <a class="card-btn" href="/instrutores/{{instrutor.ident}}/edit">Editar Detalhes do Instrutor</a>            
+        </p>
+    </section>
+</section>
+{% endblock content %}

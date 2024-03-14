@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form" action="/atividades/{{atividade.ident}}" method="POST">
+    
+    <h1>Editar Atividade</h1>
+
+    <label for="name">Nome da atividade:</label>
+    <input name="name" id="name" placeholder="Nome da atividade" type="text" value="{{atividade.name}}" required autofocus>
+
+    <label for="instructor">Instrutor:</label>
+    <select id="instructor" name="instructor">
+        {% for instrutor in instrutores %}
+            <option value="{{instrutor.ident}}" {% if atividade.instructor == instrutor.ident %} selected="selected" {% endif %}>{{instrutor.name}} {{instrutor.surname}}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="date">Horário:</label>
+    <input name="date" id="date" placeholder="Data" type="datetime-local" value="{{atividade.date.strftime('%Y-%m-%d %H:%M')}}" required>
+
+    <label for="time_length">Duração:</label>
+    <input type="text" name="time_length" id="time_length" placeholder="Duração" value="{{atividade.time_length}}" required>
+
+    <label for="capacity">Capacidade:</label>
+    <input type="text" name="capacity" id="capacity" placeholder="Capacidade" value="{{atividade.capacity}}" required>
+
+    <label for="plan_type">Tipo do plano</label>
+    <select id="plan_type" name="plan_type">
+        {% for tipo_plano in tipos_planos %}
+        <option value="{{tipo_plano.ident}}" {% if atividade.plan_type == tipo_plano.ident %} selected="selected" {% endif %}>{{tipo_plano.plan}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="enabled">Ativo:</label>
+    <select name="enabled" id="enabled">
+        <option value="True">Sim</option>
+        <option value="False">Não</option>
+    </select>
+    
+    <button type="submit">Atualizar Atividade</button>
+
+</form>
+{% endblock content %}

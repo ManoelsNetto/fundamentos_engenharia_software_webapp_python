@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flexcards">
+    {% for atividade in atividades %}
+    <div class="card">
+        <h4 id="name"><strong>{{atividade.name}}</strong></h4>
+        <h5>{{atividade.date.strftime("%d/%m/%Y")}}</h5>
+        <h5>{{atividade.date.strftime("%X")}}</h5>
+        <h6>{{atividade.plan_type.plan}}</h6>
+        <hr>
+        <p>
+            <a class="card-btn" href="/atividades/{{atividade.ident}}">Detalhes</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/agendamentos/novo/atividade/{{atividade.ident}}">Fazer Agendamento</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/atividade/{{atividade.ident}}/edit">Editar</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/atividades/{{atividade.ident}}/delete">Remover</a>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

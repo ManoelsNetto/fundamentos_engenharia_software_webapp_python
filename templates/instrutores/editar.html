@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form" action="/instrutores/{{instrutor.ident}}" method="POST" enctype="multipart/form-data">
+    
+    <h1>Editar Instrutor</h1>
+
+    {% if instrutor.img %}
+    <img height="120px" src="{{url_for('static', filename='uploads/' + instrutor.img.__str__())}}"
+         style="display:block;margin:auto;">
+    {% endif %}
+
+    <span class="error">{{error}}</span>
+
+    <label for="name">Nome:</label>
+    <input name="name" id="name" placeholder="Nome" type="text" value="{{instrutor.name}}" required autofocus>
+
+    <label for="surname">Sobrenome:</label>
+    <input name="surname" id="surname" placeholder="Sobrenome" type="text" value="{{instrutor.surname}}" required>
+
+    <label for="birth_day">Data de nascimento:</label>
+    <input id="birth_day" name="birth_day" placeholder="Data de nascimento" type="date" value="{{instrutor.birth_day}}" required>
+
+    <label for="phone">Telefone:</label>
+    <input type="text" name="phone" id="phone" placeholder="Telefone" value="{{instrutor.phone}}" required>
+
+    <label for="address">Endereço:</label>
+    <input type="textarea" name="address" id="address" placeholder="Endereço" value="{{instrutor.address}}" required>
+
+    <label for="img">Imagem:</label>
+    <input id="img" name="img" type="file">
+
+    <button type="submit">Atualizar Instrutor</button>
+
+</form>
+{% endblock content %}

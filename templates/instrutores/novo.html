@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form" action="/instrutores" method="POST" enctype="multipart/form-data">
+    
+    <h1>Novo Instrutor</h1>
+
+    <label for="name">Nome:</label>
+    <input name="name" id="name" placeholder="Nome" type="text" required autofocus>
+
+    <label for="surname">Sobrenome:</label>
+    <input name="surname" id="surname" placeholder="Sobrenome" type="text" required>
+
+    <label for="birth_day">Data de nascimento:</label>
+    <input id="birth_day" name="birth_day" placeholder="Data de nascimento" type="date" required>
+
+    <label for="phone">Telefone:</label>
+    <input type="text" name="phone" id="phone" placeholder="Telefone" required>
+
+    <label for="address">Endereço:</label>
+    <input type="textarea" name="address" id="address" placeholder="Endereço" required>
+
+    <label for="img">Imagem</label>
+    <input id="img" name="img" type="file">
+
+    <button type="submit">Adicionar Instrutor</button>
+</form>
+{% endblock content %}

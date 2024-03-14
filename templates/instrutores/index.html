@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flexcards">
+    {% for instrutor in instrutores %}
+    <div class="card">
+        {% if instrutor.img %}
+        <img id="logo" src="{{ url_for('static', filename='uploads/' + instrutor.img.__str__()) }}" alt="logo">
+        {% else %}
+        <img id="logo" src="{{ url_for('static', filename='user_account_profile.png') }}" alt="logo">
+        {% endif %}
+        <h4 id="name"><strong>{{instrutor.name}} {{instrutor.surname}}</strong></h4>
+        <h5>Telefone: {{instrutor.phone}}</h5>
+        <hr>
+
+        <p>
+            <a class="card-btn" href="/instrutores/{{instrutor.ident}}">Detalhes</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/instrutores/{{instrutor.ident}}/edit">Editar</a>
+        </p>
+        <hr>
+        <p>
+            <a class="card-btn" href="/instrutores/{{instrutor.ident}}/delete">Remover</a>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
